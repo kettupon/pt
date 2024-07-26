@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQLite Viewer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/sql-wasm.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -37,8 +38,8 @@
 
     <script>
         async function fetchData() {
-            // URL of your online database or the CDN link to the WASM file
-            const dbUrl = 'https://github.com/kettupon/pt/database.db';
+            // Replace with the correct URL to your raw .db file on GitHub
+            const dbUrl = 'https://raw.githubusercontent.com/kettupon/pt/main/database.db';
 
             try {
                 const response = await fetch(dbUrl);
@@ -46,8 +47,7 @@
                 const arrayBuffer = await response.arrayBuffer();
                 const uInt8Array = new Uint8Array(arrayBuffer);
 
-                // Initialize sql.js with the correct WASM file location
-                const SQL = await initSqlJs({ locateFile: fileName => `https://your-username.github.io/your-repository/sql-wasm.wasm` });
+                const SQL = await initSqlJs({ locateFile: fileName => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${fileName}` });
                 const db = new SQL.Database(uInt8Array);
 
                 const tables = db.exec("SELECT name FROM sqlite_master WHERE type='table';");
