@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group.checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+        .form-group.checkbox-group label {
+            margin: 0;
+            margin-left: 0px;
+        }
+        .form-group .save-btn {
+            text-align: center;
+        }
+        .form-group .save-btn input {
+            width: auto;
+            background-color: #df8414;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .form-group .save-btn input:hover {
+            background-color: #26e495;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-group">
+            <label for="patient-id">Patient No.ID</label>
+            <input type="text" id="patient-id" name="patient-id">
+        </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="lastname">Lastname</label>
+            <input type="text" id="lastname" name="lastname">
+        </div>
+        <div class="form-group">
+            <label for="diagnosis">Diagnosis</label>
+            <input type="text" id="diagnosis" name="diagnosis">
+        </div>
+        <div class="form-group">
+            <label for="technique">Technique</label>
+            <select id="technique" name="technique">
+                <option value="2d-open">2D Open</option>
+                <option value="2d-mlc">2D MLC</option>
+                <option value="3d-open">3D Open</option>
+                <option value="3d-mlc">3D MLC</option>
+                <option value="IMRT">IMRT</option>
+                <option value="Electron">Electron</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="fields">Fields</label>
+            <input type="text" id="fields" name="fields">
+        </div>
+        <div class="form-group">
+            <label for="day-p1">Day P1</label>
+            <input type="text" id="day-p1" name="day-p1">
+        </div>
+
+        <div class="form-group checkbox-group">
+            <label for="day-p2">Day P2</label>
+            <input type="checkbox" id="day-p2" name="day-p2" onclick="toggleDayP2Technique()">
+            <label for="YES">YES</label>
+            
+        </div>
+
+
+        <div class="form-group">
+            <label for="day-p2-technique">Day P2 Technique</label>
+            <select id="day-p2-technique" name="day-p2-technique" disabled>
+              <option value="2d-open">2D Open</option>
+              <option value="2d-mlc">2D MLC</option>
+              <option value="3d-open">3D Open</option>
+              <option value="3d-mlc">3D MLC</option>
+              <option value="IMRT">IMRT</option>
+              <option value="Electron">Electron</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+
+        <div class="form-group">
+          <label for="fields">Fields</label>
+          <input type="text" id="fields" name="fields">
+          
+
+        <div class="form-group">
+            <label for="day-p=day-p2-fill">Day P2</label>
+            <input type="text" id="day-p2-fill" name="day-p2-fill">
+        
+        </div>
+
+        <div class="form-group save-btn">
+            <input type="submit" value="Save">
+        </div>
+    </div>
+    <script>
+      function toggleDayP2Technique() {
+          var checkbox = document.getElementById('day-p2');
+          var dayP2Technique = document.getElementById('day-p2-technique');
+          dayP2Technique.disabled = !checkbox.checked;
+      }
+  </script>
+</body>
+</html>
